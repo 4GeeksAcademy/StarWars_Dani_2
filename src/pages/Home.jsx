@@ -1,16 +1,35 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCharacters } from "../redux/actions/charactersActions.js";
+import { fetchVehicles } from "../redux/actions/vehiclesActions.js";
+import { fetchPlanets } from "../redux/actions/planetsAction.js";
+import CardList from "../components/CardList";
 
-export const Home = () => {
+const Home = () => {
+  const dispatch = useDispatch();
+  const { list: characters } = useSelector((state) => state.characters);
+  const { list: vehicles } = useSelector((state) => state.vehicles);
+  const { list: planets } = useSelector((state) => state.planets);
 
-  const {store, dispatch} =useGlobalReducer()
+  useEffect(() => {
+    dispatch(fetchCharacters());
+    dispatch(fetchVehicles());
+    dispatch(fetchPlanets());
+  }, [dispatch]);
 
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-		</div>
-	);
-}; 
+  return (
+    <div>
+      <h1>Star Wars Catalog</h1>
+      <h2>Characters</h2>
+      <CardList items={characters} type="characters" />
+      
+      <h2>Vehicles</h2>
+      <CardList items={vehicles} type="vehicles" />
+      
+      <h2>Planets</h2>
+      <CardList items={planets} type="planets" />
+    </div>
+  );
+};
+
+export default Home;

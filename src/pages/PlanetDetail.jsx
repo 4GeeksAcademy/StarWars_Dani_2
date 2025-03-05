@@ -11,9 +11,9 @@ const PlanetDetail = () => {
   return (
     <div>
       <h1>{planet.name}</h1>
-      <p>Height: {planet.height}</p>
-      <p>Mass: {planet.mass}</p>
-      <p>Gender: {planet.gender}</p>
+      <p>Rotation_period: {planet.rotation_period}</p>
+      <p>Terrain: {planet.terrain}</p>
+      <p>Gravity: {planet.gravity}</p>
     </div>
   );
 };

@@ -11,9 +11,9 @@ const VehicleDetail = () => {
   return (
     <div>
       <h1>{vehicle.name}</h1>
-      <p>Height: {vehicle.height}</p>
-      <p>Mass: {vehicle.mass}</p>
-      <p>Gender: {vehicle.gender}</p>
+      <p>Model: {vehicle.model}</p>
+      <p>Manufacturer: {vehicle.manufacturer}</p>
+      <p>Passengers: {vehicle.pagassengers}</p>
     </div>
   );
 };

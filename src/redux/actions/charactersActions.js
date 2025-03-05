@@ -1,9 +1,13 @@
-import { fetchCharactersStart, fetchCharactersSuccess, fetchCharactersError } from "../reducers/charactersReducer";
+import {
+  fetchCharactersStart,
+  fetchCharactersSuccess,
+  fetchCharactersError,
+} from "../reducers/charactersReducer";
 
 export const fetchCharacters = () => async (dispatch) => {
   dispatch(fetchCharactersStart());
   try {
-    const response = await fetch("https://swapi.dev/api/people/");
+    const response = await fetch("https://swapi.dev/api/people?limit=3");
     const data = await response.json();
     dispatch(fetchCharactersSuccess(data.results));
   } catch (error) {

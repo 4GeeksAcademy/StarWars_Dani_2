@@ -4,9 +4,14 @@ import { useSelector } from "react-redux";
 
 const CharacterDetail = () => {
   const { id } = useParams();
-  const character = useSelector((state) => state.characters.list[id - 1]);
+  const { list, loading } = useSelector((state) => state.character || { list: [], loading: true });
 
-  if (!character) return <p>Character not found</p>;
+  if (loading) return <p>Loading character...</p>;
+  if (!list.length) return <p>No character available</p>;
+
+  const character = list[id - 1];
+
+  if (!character) return <p>character not found</p>;
 
   return (
     <div>

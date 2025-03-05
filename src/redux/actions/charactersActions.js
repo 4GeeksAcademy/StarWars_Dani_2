@@ -7,9 +7,9 @@ import {
 export const fetchCharacters = () => async (dispatch) => {
   dispatch(fetchCharactersStart());
   try {
-    const response = await fetch("https://swapi.dev/api/people?limit=3");
+    const response = await fetch("https://swapi.dev/api/people/");
     const data = await response.json();
-    dispatch(fetchCharactersSuccess(data.results));
+    dispatch(fetchCharactersSuccess(data.results.slice(0,3)));
   } catch (error) {
     dispatch(fetchCharactersError());
   }

@@ -2,11 +2,16 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const PlanetDetail = () => {
+const PlanetsDetail = () => {
   const { id } = useParams();
-  const planet = useSelector((state) => state.planet.list[id - 1]);
+  const { list, loading } = useSelector((state) => state.planets || { list: [], loading: true });
 
-  if (!planet) return <p>planet not found</p>;
+  if (loading) return <p>Loading planets...</p>;
+  if (!list.length) return <p>No planets available</p>;
+
+  const planet = list[id - 1];
+
+  if (!planet) return <p>planets not found</p>;
 
   return (
     <div>
@@ -18,4 +23,4 @@ const PlanetDetail = () => {
   );
 };
 
-export default PlanetDetail;
+export default PlanetsDetail;

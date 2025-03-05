@@ -3,6 +3,8 @@ import charactersReducer from "./reducers/charactersReducer";
 import vehiclesReducer from "./reducers/vehiclesReducer";
 import planetsReducer from "./reducers/vehiclesReducer";
 
+
+
 const store = configureStore({
   reducer: {
     characters: charactersReducer,
